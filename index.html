@@ -3,234 +3,476 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ahsan Raza | SEO Expert</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<title>Ahsan Raza | SEO & Digital Marketing Strategist</title>
+<meta name="description" content="Ahsan Raza — SEO & Digital Marketing Strategist with 5+ years of experience in Technical SEO, Link Building, Content Strategy and B2B Lead Generation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --bg:#0c0c0e;
+    --bg-panel:#151519;
+    --bg-panel-2:#1c1c21;
+    --line: rgba(245,241,232,0.09);
+    --gold:#c9a227;
+    --gold-light:#e8c468;
+    --text:#f5f1e8;
+    --text-muted:#a19c8f;
+    --text-dim:#6f6a60;
+    --radius: 2px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    letter-spacing:-0.02em;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .wrap{ max-width:1160px; margin:0 auto; padding:0 32px; }
+  ::selection{background:var(--gold);color:#0c0c0e;}
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-}
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
 
-body{
-background:#050816;
-color:white;
-}
+  /* ---------- nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(12,12,14,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:1160px; margin:0 auto; padding:20px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{ font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:20px; letter-spacing:0.02em; }
+  .logo span{color:var(--gold);}
+  .nav-links{ display:flex; gap:32px; align-items:center; }
+  .nav-links a{ font-size:14px; color:var(--text-muted); transition:color 0.2s ease; position:relative; }
+  .nav-links a:not(.btn):hover{color:var(--text);}
+  .nav-links a:not(.btn)::after{
+    content:''; position:absolute; left:0; bottom:-6px; width:0; height:1px;
+    background:var(--gold); transition:width 0.25s ease;
+  }
+  .nav-links a:not(.btn):hover::after{width:100%;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--gold); color:#0c0c0e !important; font-weight:600; font-size:14px;
+    padding:10px 20px; border-radius:var(--radius);
+    transition:background 0.2s ease, transform 0.2s ease; border:1px solid var(--gold);
+  }
+  .btn:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-1px);}
+  .btn-outline{ background:transparent; color:var(--text) !important; border:1px solid var(--line); }
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold) !important;background:transparent;transform:translateY(-1px);}
+  .menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer;}
 
-header{
-padding:80px 20px;
-text-align:center;
-background:linear-gradient(135deg,#0f172a,#111827);
-}
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh; display:flex; align-items:center; padding:150px 0 80px;
+    position:relative;
+    background: radial-gradient(ellipse 700px 500px at 85% 15%, rgba(201,162,39,0.12), transparent 60%);
+    text-align:center;
+  }
+  .hero-inner{ max-width:760px; margin:0 auto; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--gold); display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:22px;
+  }
+  .eyebrow::before, .eyebrow::after{ content:''; width:22px; height:1px; background:var(--gold); display:inline-block; }
+  .hero h1{ font-size:clamp(34px, 5.2vw, 58px); line-height:1.08; margin-bottom:14px; }
+  .hero h1 span{ display:block; color:var(--gold); font-size:0.42em; font-weight:600; margin-top:14px; letter-spacing:0.01em; }
+  .hero p.lead{ font-size:17px; color:var(--text-muted); max-width:560px; margin:26px auto 38px; }
+  .hero-ctas{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
 
-header h1{
-font-size:55px;
-color:#00ffd5;
-}
+  /* ---------- section shell ---------- */
+  section{padding:110px 0;}
+  .section-head{ margin-bottom:56px; max-width:620px; }
+  .section-head .eyebrow{ justify-content:flex-start; }
+  .section-head .eyebrow::after{ display:none; }
+  .section-head h2{ font-size:clamp(28px, 3.4vw, 40px); }
+  .section-head p{ color:var(--text-muted); margin-top:14px; font-size:15.5px; }
 
-header p{
-margin-top:15px;
-font-size:22px;
-color:#ddd;
-}
+  /* ---------- about ---------- */
+  .about{ background:var(--bg-panel); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:start; }
+  .avatar-block{
+    aspect-ratio:1; border:1px solid var(--line); border-radius:8px;
+    background:linear-gradient(160deg, var(--bg-panel-2), var(--bg));
+    display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
+  }
+  .avatar-block::before{
+    content:''; position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 27px, var(--line) 28px),
+      repeating-linear-gradient(90deg, transparent, transparent 27px, var(--line) 28px);
+    opacity:0.5;
+  }
+  .avatar-mark{
+    font-family:'Space Grotesk', sans-serif; font-size:96px; font-weight:700; color:transparent;
+    -webkit-text-stroke:1.5px var(--gold); position:relative; z-index:1;
+  }
+  .avatar-badge{
+    position:absolute; bottom:16px; left:16px; right:16px; z-index:1;
+    background:rgba(12,12,14,0.85); border:1px solid var(--line); border-radius:6px;
+    padding:12px 16px; display:flex; align-items:baseline; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .avatar-badge .num{ font-size:22px; color:var(--gold); font-weight:600; }
+  .avatar-badge .txt{ font-size:11px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.06em; }
+  .about-body p{ color:var(--text-muted); font-size:15.5px; margin-bottom:18px; max-width:560px; }
+  .about-tags{ display:flex; flex-wrap:wrap; gap:10px; margin-top:28px; }
+  .about-tags span{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--gold);
+    border:1px solid rgba(201,162,39,0.35); padding:6px 12px; border-radius:20px;
+  }
 
-.btn{
-display:inline-block;
-margin-top:30px;
-padding:14px 35px;
-background:#00ffd5;
-color:#000;
-font-weight:bold;
-text-decoration:none;
-border-radius:50px;
-transition:.3s;
-}
+  /* ---------- services ---------- */
+  .services-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .service-card{ background:var(--bg); padding:36px 30px; transition:background 0.3s ease; position:relative; }
+  .service-card:hover{background:var(--bg-panel);}
+  .service-num{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--gold);
+    display:block; margin-bottom:18px; letter-spacing:0.04em;
+  }
+  .service-card h3{ font-size:17px; margin-bottom:10px; font-weight:600; }
+  .service-card p{ color:var(--text-dim); font-size:13.5px; }
 
-.btn:hover{
-transform:scale(1.08);
-}
+  /* ---------- skills ---------- */
+  .skills-cols{ display:grid; grid-template-columns:1fr 1fr; gap:50px; }
+  .skills-col h4{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.1em;
+    color:var(--text-dim); margin-bottom:18px; padding-bottom:10px; border-bottom:1px solid var(--line);
+  }
+  .skills-wrap{ display:flex; flex-wrap:wrap; gap:12px; }
+  .skill-chip{
+    display:flex; align-items:center; gap:9px; border:1px solid var(--line); background:var(--bg-panel);
+    padding:12px 18px; border-radius:6px; font-size:13.5px;
+    transition:border-color 0.25s ease, transform 0.25s ease;
+  }
+  .skill-chip:hover{ border-color:var(--gold); transform:translateY(-2px); }
+  .skill-dot{ width:6px; height:6px; border-radius:50%; background:var(--gold); flex-shrink:0; }
 
-section{
-padding:70px 10%;
-}
+  /* ---------- experience ---------- */
+  .timeline{ position:relative; padding-left:36px; }
+  .timeline::before{
+    content:''; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background:var(--line);
+  }
+  .tl-item{ position:relative; padding-bottom:52px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-dot{
+    position:absolute; left:-36px; top:4px; width:11px; height:11px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--gold);
+  }
+  .tl-date{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--gold);
+    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px; display:block;
+  }
+  .tl-role{ font-size:19px; font-weight:600; margin-bottom:4px; font-family:'Space Grotesk', sans-serif; }
+  .tl-company{ font-size:13.5px; color:var(--text-dim); margin-bottom:12px; }
+  .tl-desc{ color:var(--text-muted); font-size:14.5px; max-width:600px; }
 
-h2{
-font-size:35px;
-margin-bottom:25px;
-color:#00ffd5;
-}
+  /* ---------- footer / contact ---------- */
+  .contact{ background:var(--bg-panel); border-top:1px solid var(--line); }
+  .contact-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:70px; }
+  .contact h2{ font-size:clamp(30px, 4vw, 46px); margin-bottom:20px; }
+  .contact p.lead{ color:var(--text-muted); font-size:16px; max-width:440px; margin-bottom:36px; }
+  .contact-list{ display:flex; flex-direction:column; border-top:1px solid var(--line); }
+  .contact-row{ display:flex; align-items:center; justify-content:space-between; padding:20px 0; border-bottom:1px solid var(--line); }
+  .contact-row .label{
+    font-size:12px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .contact-row .value{ font-size:15px; transition:color 0.2s ease; }
+  .contact-row a.value:hover{ color:var(--gold); }
+  .socials{ display:flex; gap:12px; margin-top:32px; }
+  .social-btn{
+    width:42px; height:42px; border:1px solid var(--line); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color 0.2s ease, color 0.2s ease, transform 0.2s ease; color:var(--text-muted);
+  }
+  .social-btn:hover{ border-color:var(--gold); color:var(--gold); transform:translateY(-2px); }
 
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
+  footer{ padding:32px 0; border-top:1px solid var(--line); }
+  footer .wrap{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
+  footer p{ font-size:13px; color:var(--text-dim); }
 
-.card{
-background:#111827;
-padding:25px;
-border-radius:15px;
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-}
-
-ul{
-padding-left:20px;
-line-height:2;
-}
-
-footer{
-padding:40px;
-text-align:center;
-background:#111827;
-}
-
-.social a{
-display:inline-block;
-margin:10px;
-color:#00ffd5;
-text-decoration:none;
-font-size:18px;
-}
-
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .about-grid, .contact-grid, .skills-cols{ grid-template-columns:1fr; }
+    .services-grid{ grid-template-columns:1fr 1fr; }
+    .nav-links{
+      position:fixed; top:65px; right:0; background:var(--bg-panel);
+      border-left:1px solid var(--line); border-bottom:1px solid var(--line);
+      flex-direction:column; align-items:flex-start; padding:24px; gap:20px;
+      transform:translateX(100%); transition:transform 0.3s ease; width:220px;
+    }
+    .nav-links.open{ transform:translateX(0); }
+    .menu-toggle{ display:block; }
+  }
+  @media (max-width:600px){
+    .services-grid{ grid-template-columns:1fr; }
+    .wrap{ padding:0 20px; }
+    .hero{ padding-top:120px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
 </style>
-
 </head>
-
 <body>
 
 <header>
-
-<h1>Ahsan Raza</h1>
-
-<p>SEO Expert | Technical SEO | Local SEO | On-Page SEO</p>
-
-<a class="btn" href="https://wa.me/923245243732" target="_blank">Hire Me</a>
-
+  <nav>
+    <a href="#" class="logo">AHSAN<span>.</span>RAZA</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="https://wa.me/923245243732" class="btn" target="_blank" rel="noopener">Hire Me</a></li>
+    </ul>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </nav>
 </header>
 
-<section>
-
-<h2>About Me</h2>
-
-<p>
-
-I'm Ahsan Raza, an SEO Specialist helping businesses grow through
-Technical SEO, On-Page SEO, Local SEO, Keyword Research,
-Content Strategy and Website Optimization.
-
-</p>
-
+<section class="hero" id="home">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">5+ Years Experience</div>
+    <h1>Ahsan Raza<span>SEO &amp; Digital Marketing Strategist</span></h1>
+    <p class="lead">Helping businesses turn search visibility into real growth — through data-driven SEO, content strategy, and performance-focused digital marketing.</p>
+    <div class="hero-ctas">
+      <a href="#services" class="btn">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Let's Talk</a>
+    </div>
+  </div>
 </section>
 
-<section>
-
-<h2>Skills</h2>
-
-<div class="cards">
-
-<div class="card">Technical SEO</div>
-
-<div class="card">Local SEO</div>
-
-<div class="card">On-Page SEO</div>
-
-<div class="card">Keyword Research</div>
-
-<div class="card">Google Search Console</div>
-
-<div class="card">Google Analytics</div>
-
-<div class="card">WordPress SEO</div>
-
-<div class="card">SEO Audit</div>
-
-</div>
-
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="avatar-block reveal">
+      <div class="avatar-mark">AR</div>
+      <div class="avatar-badge">
+        <span class="num">5+</span>
+        <span class="txt">Years of Experience</span>
+      </div>
+    </div>
+    <div class="about-body reveal">
+      <div class="eyebrow">About Me</div>
+      <h2 style="margin-bottom:20px;">Search visibility that becomes real growth.</h2>
+      <p>I'm Ahsan Raza, an SEO and Digital Marketing Strategist with over 5 years of experience helping brands, agencies, and startups rank higher, attract the right audience, and convert traffic into paying customers.</p>
+      <p>My approach goes beyond rankings — I focus on building search visibility that translates into real business opportunities. Over the years, I've worked with businesses across different industries, combining technical SEO, content strategy, and campaign management to deliver measurable results.</p>
+      <p>When a business doesn't show up at the right moment in a customer's search journey, they lose the opportunity to someone who does. That's the problem I solve — turning search traffic into leads, and leads into loyal clients.</p>
+      <div class="about-tags">
+        <span>Technical SEO</span>
+        <span>Content Strategy</span>
+        <span>Link Building</span>
+        <span>Campaign Management</span>
+        <span>B2B Lead Generation</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section>
-
-<h2>Services</h2>
-
-<div class="cards">
-
-<div class="card">
-<h3>Website SEO Audit</h3>
-</div>
-
-<div class="card">
-<h3>Technical SEO Fixes</h3>
-</div>
-
-<div class="card">
-<h3>Local SEO</h3>
-</div>
-
-<div class="card">
-<h3>Keyword Research</h3>
-</div>
-
-<div class="card">
-<h3>Content Optimization</h3>
-</div>
-
-<div class="card">
-<h3>Google Business Profile SEO</h3>
-</div>
-
-</div>
-
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">What I Do</div>
+      <h2>Services built to move revenue, not just rankings</h2>
+    </div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-num">01</span>
+      <h3>Search Engine Optimization (SEO)</h3>
+      <p>On-page, off-page, and technical SEO to improve rankings and organic visibility.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">02</span>
+      <h3>Link Building &amp; Off-Page SEO</h3>
+      <p>High-quality backlink strategies that build authority and trust with search engines.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">03</span>
+      <h3>Keyword Research &amp; Content Strategy</h3>
+      <p>Finding the right keywords and building content plans that actually convert.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">04</span>
+      <h3>Digital Marketing Strategy</h3>
+      <p>End-to-end strategy covering SEO, social media, and campaign management.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">05</span>
+      <h3>B2B Lead Generation</h3>
+      <p>Outreach and pipeline strategies (including Upwork &amp; LinkedIn) that generate high-value client opportunities.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-num">06</span>
+      <h3>Website Audits &amp; Technical Fixes</h3>
+      <p>Identifying and fixing issues that hold your site back from ranking.</p>
+    </div>
+  </div>
 </section>
 
-<section>
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Skills &amp; Expertise</div>
+      <h2>What I work with daily</h2>
+    </div>
+    <div class="skills-cols reveal">
+      <div class="skills-col">
+        <h4>SEO Tools</h4>
+        <div class="skills-wrap">
+          <div class="skill-chip"><span class="skill-dot"></span>SEMrush</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Ahrefs</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Google Search Console</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Google Analytics</div>
+          <div class="skill-chip"><span class="skill-dot"></span>AI Tools for Marketing &amp; Content</div>
+        </div>
+      </div>
+      <div class="skills-col">
+        <h4>Core Expertise</h4>
+        <div class="skills-wrap">
+          <div class="skill-chip"><span class="skill-dot"></span>On-Page SEO</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Off-Page SEO</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Technical SEO</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Link Building</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Content Marketing</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Keyword Research</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Competitor Analysis</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Digital Marketing Strategy</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Campaign Management</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Growth Strategy</div>
+          <div class="skill-chip"><span class="skill-dot"></span>B2B Lead Generation</div>
+          <div class="skill-chip"><span class="skill-dot"></span>Sales Pipeline Optimization</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>Contact</h2>
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Experience — 5+ Years</div>
+      <h2>Where I've made an impact</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-date">Jan 2024 — Present</span>
+        <div class="tl-role">Senior SEO Specialist</div>
+        <div class="tl-company">Webtrix Digital Solutions</div>
+        <p class="tl-desc">Leading SEO and content strategy for multiple client websites, improving organic rankings and driving qualified traffic through data-backed strategies.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-date">Mar 2022 — Dec 2023</span>
+        <div class="tl-role">SEO &amp; Content Executive</div>
+        <div class="tl-company">RankSphere Marketing Agency</div>
+        <p class="tl-desc">Managed on-page and off-page SEO campaigns, built high-authority backlink strategies, and increased organic search visibility for local and international clients.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <span class="tl-date">Jun 2020 — Feb 2022</span>
+        <div class="tl-role">Digital Marketing Associate</div>
+        <div class="tl-company">BrightPath Media House</div>
+        <p class="tl-desc">Executed SEO and social media campaigns, optimized website content for search engines, and supported B2B lead generation efforts.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p><b>Email:</b> officialahsanraza.tech@gmail.com</p>
-
-<p><b>WhatsApp:</b> +92 324 5243732</p>
-
-<p>
-
-<b>LinkedIn:</b>
-
-<a style="color:#00ffd5;" target="_blank"
-
-href="https://www.linkedin.com/in/ahsanrazaseo07/">
-
-Click Here
-
-</a>
-
-</p>
-
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <div class="eyebrow">Let's Work Together</div>
+      <h2>Have a project in mind?</h2>
+      <p class="lead">Let's talk about how I can help your business rank higher and grow.</p>
+      <a href="https://wa.me/923245243732" class="btn" target="_blank" rel="noopener">Message on WhatsApp</a>
+      <div class="socials">
+        <a class="social-btn" href="https://www.facebook.com/profile.php?id=61592998760955" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 9h3V6h-3a4 4 0 00-4 4v2H7v3h3v6h3v-6h3l1-3h-4v-2a1 1 0 011-1z"/></svg>
+        </a>
+        <a class="social-btn" href="https://www.tiktok.com/@ahsan.raza.seo" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 4v10.5a3.5 3.5 0 11-3-3.46"/><path d="M14 4c0 2.5 2 4.5 4.5 4.5"/></svg>
+        </a>
+        <a class="social-btn" href="https://www.linkedin.com/in/ahsanrazaseo07/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 13v4"/></svg>
+        </a>
+        <a class="social-btn" href="https://www.pinterest.com/ahsanrazaseo07/" target="_blank" rel="noopener" aria-label="Pinterest">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M10 17c1-3 1.5-5 1.5-6.8a2.2 2.2 0 114.4 0c0 1.6-1 3.8-1.5 5.3-.5 1.5.5 2.5 1.7 2 1.8-.8 2.9-3 2.9-5.5 0-3-2.2-5.5-5.9-5.5-4 0-6.4 3-6.4 6 0 1.2.4 2.2 1.1 2.9"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="contact-list">
+        <div class="contact-row">
+          <span class="label">Email</span>
+          <a class="value" href="mailto:officialahsanraza.tech@gmail.com">officialahsanraza.tech@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">WhatsApp</span>
+          <a class="value" href="https://wa.me/923245243732" target="_blank" rel="noopener">+92 324 5243732</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">Location</span>
+          <span class="value">Pakistan</span>
+        </div>
+        <div class="contact-row">
+          <span class="label">LinkedIn</span>
+          <a class="value" href="https://www.linkedin.com/in/ahsanrazaseo07/" target="_blank" rel="noopener">ahsanrazaseo07</a>
+        </div>
+        <div class="contact-row">
+          <span class="label">Availability</span>
+          <span class="value">Open for projects</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <footer>
-
-<h2>Ahsan Raza</h2>
-
-<p>SEO Expert</p>
-
-<div class="social">
-
-<a href="https://www.linkedin.com/in/ahsanrazaseo07/" target="_blank">LinkedIn</a>
-
-</div>
-
-<p style="margin-top:20px;">© 2026 Ahsan Raza. All Rights Reserved.</p>
-
+  <div class="wrap">
+    <p>© <span id="year"></span> Ahsan Raza. All Rights Reserved.</p>
+    <p>Built for search. Designed to convert.</p>
+  </div>
 </footer>
 
-</body>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
 
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
 </html>
